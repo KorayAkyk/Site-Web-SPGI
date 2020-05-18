@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <link type="text/javascript" href="Super_Gardette/JS/GetData.js" />
+  <script>
+    var data = <?php echo json_encode($phpData);?>;
+  </script>
+  <title></title>
+  </head>
+  <body>
+    <?php
+    foreach ($phpData as $id => $donnees){
+    {
+    ?><div class="news">
+        <h3><?php echo htmlspecialchars($donnees['titre']); ?> le <?php echo $donnees['date_creation_fr']; ?></h3>
+        <p><?php echo nl2br(htmlspecialchars($donnees['contenu'])); ?><br>
+        <a href="">Modifier</a> |
+        <a href="#" onclick="confirmation(<?php echo $id;?>)">Suppression</a> | 
+        <a href="commentaires.php?id=<?php echo $id;?>">Voir les commentaires</a></p>
+    </div>
+        <?php
+    } //Fin du foreach
+  }
+    ?> Nombre de billets affich&eacute;s: <?php echo $count; ?> sur <?php echo $total; ?>
+  </body>
+</html>
